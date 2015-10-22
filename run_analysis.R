@@ -42,15 +42,15 @@ names(Data_all) <- gsub("-", "", names(Data_all))
 activity_labels<-read.table('./activity_labels.txt',header=FALSE); #imports activity_labels.txt
 
 # Assign column names to the test data imported in step 1
-colnames(test_subject) = "subjectId";
-colnames(test_data)       = features[,2]; 
-colnames(test_label)       = "activityId";
+colnames(test_subject) <- "subjectId";
+colnames(test_data)   <- features[,2]; 
+colnames(test_label)       <- "activityId";
 
 # Assigin column names to the data imported in step 1
-colnames(activity_labels)  = c('activityId','activityType');
-colnames(train_subject)  = "subjectId";
-colnames(train_data)        = features[,2]; 
-colnames(train_label)        = "activityId";
+colnames(activity_labels)  <- c('activityId','activityType');
+colnames(train_subject)  <- "subjectId";
+colnames(train_data)        <- features[,2]; 
+colnames(train_label)        <- "activityId";
 
 # Merging label and subject file
 
@@ -58,9 +58,9 @@ Label_all <- rbind(train_label, test_label)
 Subject_all <- rbind(train_subject, test_subject)
 
 # final data set
-Data_final = cbind(Data_all, Subject_all, Label_all);
-Data_final = merge(Data_final,activity_labels,by='activityId',all.x=TRUE)
-colNames  = colnames(Data_final); 
+Data_final <- cbind(Data_all, Subject_all, Label_all);
+Data_final <- merge(Data_final,activity_labels,by='activityId',all.x=TRUE)
+colNames  <- colnames(Data_final); 
 
 
 
@@ -71,21 +71,21 @@ colNames  = colnames(Data_final);
 
 for (i in 1:length(colNames)) 
 {
-  colNames[i] = gsub("\\()","",colNames[i])
-  colNames[i] = gsub("-std$","StdDev",colNames[i])
-  colNames[i] = gsub("-mean","Mean",colNames[i])
-  colNames[i] = gsub("^(t)","time",colNames[i])
-  colNames[i] = gsub("^(f)","freq",colNames[i])
-  colNames[i] = gsub("([Gg]ravity)","Gravity",colNames[i])
-  colNames[i] = gsub("([Bb]ody[Bb]ody|[Bb]ody)","Body",colNames[i])
-  colNames[i] = gsub("[Gg]yro","Gyro",colNames[i])
-  colNames[i] = gsub("AccMag","AccMagnitude",colNames[i])
-  colNames[i] = gsub("([Bb]odyaccjerkmag)","BodyAccJerkMagnitude",colNames[i])
-  colNames[i] = gsub("JerkMag","JerkMagnitude",colNames[i])
-  colNames[i] = gsub("GyroMag","GyroMagnitude",colNames[i])
+  colNames[i] <- gsub("\\()","",colNames[i])
+  colNames[i] <- gsub("-std$","StdDev",colNames[i])
+  colNames[i] <- gsub("-mean","Mean",colNames[i])
+  colNames[i] <- gsub("^(t)","time",colNames[i])
+  colNames[i] <- gsub("^(f)","freq",colNames[i])
+  colNames[i] <- gsub("([Gg]ravity)","Gravity",colNames[i])
+  colNames[i] <- gsub("([Bb]ody[Bb]ody|[Bb]ody)","Body",colNames[i])
+  colNames[i] <- gsub("[Gg]yro","Gyro",colNames[i])
+  colNames[i] <- gsub("AccMag","AccMagnitude",colNames[i])
+  colNames[i] <- gsub("([Bb]odyaccjerkmag)","BodyAccJerkMagnitude",colNames[i])
+  colNames[i] <- gsub("JerkMag","JerkMagnitude",colNames[i])
+  colNames[i] <- gsub("GyroMag","GyroMagnitude",colNames[i])
 }
 
-colnames(Data_final) = colNames
+colnames(Data_final) <- colNames
 
 
 
