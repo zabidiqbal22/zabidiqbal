@@ -4,7 +4,7 @@
 
 setwd("M:/econ7data/Coursera/Cleaning Data/UCI HAR Dataset/")
 
-## 1. Merging the training and the test sets to create one data set.
+## Step 1. Merging the training and the test sets to create one data set.
 
 # Read data from folder/files
 
@@ -23,7 +23,7 @@ Label_all <- rbind(train_label, test_label)
 Subject_all <- rbind(train_subject, test_subject)
 
 
-##2. Extract only the measurements on the mean and standard deviation for each measurement. 
+##Step 2. Extract only the measurements on the mean and standard deviation for each measurement. 
 
   
 features<-read.table('./features.txt',header=FALSE); #imports features.txt
@@ -37,7 +37,7 @@ names(Data_all) <- gsub("std", "Std", names(Data_all))
 names(Data_all) <- gsub("-", "", names(Data_all))
 
 
-##3. Use descriptive activity names to name the activities in the data set
+##Step 3. Use descriptive activity names to name the activities in the data set
 
 activity_labels<-read.table('./activity_labels.txt',header=FALSE); #imports activity_labels.txt
 
@@ -66,7 +66,7 @@ colNames  <- colnames(Data_final);
 
 
 
-## 4. Appropriately label the data set with descriptive activity names. 
+## Step 4. Appropriately label the data set with descriptive activity names. 
 
 
 for (i in 1:length(colNames)) 
@@ -89,7 +89,7 @@ colnames(Data_final) <- colNames
 write.table(Data_final, "Data_final.txt",row.names=FALSE,sep='\t') #  First dataset
 
 
-##5) Creates a second, independent tidy finalData set with the average of each variable for each activity and each subject. 
+## Step 5) Creates a second, independent tidy finalData set with the average of each variable for each activity and each subject. 
 
 library(plyr)
 library(dplyr)
