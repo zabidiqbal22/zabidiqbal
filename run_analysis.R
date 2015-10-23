@@ -1,4 +1,4 @@
-## Github repo: 
+# Author: Zabid Iqbal#
 
 #setting up working directory 
 
@@ -6,7 +6,7 @@ setwd("M:/econ7data/Coursera/Cleaning Data/UCI HAR Dataset/")
 
 ## 1. Merging the training and the test sets to create one data set.
 
-# Read data from files
+# Read data from folder/files
 
 train_data <- read.table("./train/X_train.txt")
 train_label <- read.table("./train/y_train.txt")
@@ -86,12 +86,7 @@ for (i in 1:length(colNames))
 }
 
 colnames(Data_final) <- colNames
-
-
-
-write.table(Data_final, "Data_final.txt",row.names=FALSE,sep='\t') #  1st dataset
-
-
+write.table(Data_final, "Data_final.txt",row.names=FALSE,sep='\t') #  First dataset
 
 
 ##5) Creates a second, independent tidy finalData set with the average of each variable for each activity and each subject. 
